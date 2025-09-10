@@ -12,7 +12,7 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
@@ -23,105 +23,175 @@
         
         .card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            padding: 32px;
             text-align: center;
-            max-width: 400px;
+            max-width: 380px;
             width: 100%;
+            position: relative;
         }
         
-        .profile-img {
-            width: 120px;
-            height: 120px;
+        .profile-icon {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             background: linear-gradient(45deg, #667eea, #764ba2);
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+            font-size: 32px;
             color: white;
+            font-weight: bold;
         }
         
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 28px;
+        .name {
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 600;
         }
         
         .title {
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            padding: 8px 0;
+            color: #333;
             font-size: 16px;
         }
         
-        .info {
-            margin: 15px 0;
-            color: #555;
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
         }
         
-        .contact-btn {
-            display: inline-block;
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin: 24px 0;
+        }
+        
+        .action-btn {
+            flex: 1;
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            margin: 8px;
-            transition: transform 0.3s;
+            padding: 12px 16px;
+            border-radius: 12px;
             font-size: 14px;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
         }
         
-        .contact-btn:hover {
+        .action-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
         }
         
-        .social-links {
-            margin-top: 30px;
+        .social-section {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .social-title {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
         }
         
         .social-btn {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            margin: 0 10px;
             text-decoration: none;
             color: white;
-            line-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 20px;
-            transition: transform 0.3s;
+            transition: transform 0.2s;
         }
-        
-        .instagram { background: #E4405F; }
-        .twitter { background: #1DA1F2; }
         
         .social-btn:hover {
             transform: scale(1.1);
+        }
+        
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        
+        .twitter {
+            background: #1DA1F2;
+        }
+        
+        @media (max-width: 480px) {
+            .card {
+                margin: 10px;
+                padding: 24px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <div class="profile-img">��</div>
-        <h1>홍길동</h1>
+        <div class="profile-icon">홍</div>
+        <h1 class="name">홍길동</h1>
         <p class="title">개발자 | ABC 회사</p>
         
-        <div class="info">
-            <p>�� 010-1234-5678</p>
-            <p>✉️ hong@example.com</p>
-            <p>🌐 www.mywebsite.com</p>
+        <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <span>010-1234-5678</span>
         </div>
         
-        <div>
-            <a href="tel:010-1234-5678" class="contact-btn">전화하기</a>
-            <a href="mailto:hong@example.com" class="contact-btn">이메일 보내기</a>
+        <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <span>hong@example.com</span>
         </div>
         
-        <div class="social-links">
-            <a href="https://instagram.com/myinstagram" class="social-btn instagram">��</a>
-            <a href="https://twitter.com/mytwitter" class="social-btn twitter">🐦</a>
+        <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <span>www.mywebsite.com</span>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="tel:010-1234-5678" class="action-btn">전화하기</a>
+            <a href="mailto:hong@example.com" class="action-btn">이메일 보내기</a>
+        </div>
+        
+        <div class="social-section">
+            <div class="social-title">SNS 계정</div>
+            <div class="social-buttons">
+                <a href="https://instagram.com/myinstagram" class="social-btn instagram">📷</a>
+                <a href="https://twitter.com/mytwitter" class="social-btn twitter">��</a>
+            </div>
         </div>
     </div>
 </body>
