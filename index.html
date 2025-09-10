@@ -3,191 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍길동의 디지털 명함</title>
+    <meta name="description" content="NFC 디지털 명함 - 간편한 연락처 공유">
+    <meta name="robots" content="index, follow">
+    <title>디지털 명함</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
-        
+
         .card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            padding: 40px 32px;
-            text-align: center;
+            padding: 40px;
             max-width: 400px;
             width: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
-        .profile-icon {
-            width: 100px;
-            height: 100px;
+
+        .avatar {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
-            margin: 0 auto 24px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
+            font-size: 48px;
             color: white;
-            font-weight: 600;
-            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
+            font-weight: bold;
         }
-        
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #e74c3c;
+        }
+
         .name {
-            color: #1d1d1f;
-            margin-bottom: 8px;
             font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
         }
-        
+
         .title {
-            color: #86868b;
-            margin-bottom: 32px;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
         }
-        
-        .contact-section {
-            margin-bottom: 32px;
-        }
-        
+
         .contact-item {
             display: flex;
             align-items: center;
-            margin: 16px 0;
-            padding: 12px 16px;
-            background: #f5f5f7;
-            border-radius: 12px;
-            color: #1d1d1f;
-            font-size: 16px;
-            transition: background-color 0.2s;
-        }
-        
-        .contact-item:hover {
-            background: #e8e8ed;
-        }
-        
-        .contact-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 18px;
-        }
-        
-        .action-buttons {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-        
-        .action-btn {
-            flex: 1;
-            background: #007AFF;
-            color: white;
-            text-decoration: none;
-            padding: 16px 20px;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(102, 126, 234, 0.1);
             border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        .action-btn:hover {
-            background: #0056b3;
-            transform: translateY(-1px);
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
         }
-        
-        .action-btn.secondary {
-            background: #f5f5f7;
-            color: #007AFF;
-        }
-        
-        .action-btn.secondary:hover {
-            background: #e8e8ed;
-        }
-        
-        .social-section {
-            padding-top: 24px;
-            border-top: 1px solid #e8e8ed;
-        }
-        
-        .social-title {
-            color: #86868b;
-            font-size: 15px;
-            margin-bottom: 20px;
+
+        .contact-item a {
+            text-decoration: none;
+            color: #333;
             font-weight: 500;
         }
-        
+
+        .contact-item a:hover {
+            color: #667eea;
+        }
+
+        .icon {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .social-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .social-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
         .social-buttons {
             display: flex;
+            gap: 15px;
             justify-content: center;
-            gap: 16px;
         }
-        
+
         .social-btn {
-            width: auto;
-            height: 48px;
-            border-radius: 24px;
-            text-decoration: none;
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
             font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            padding: 0 24px;
-            min-width: 120px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
-        
+
         .social-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
-        
-        .instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-        
-        .twitter {
-            background: #1DA1F2;
-        }
-        
+
         @media (max-width: 480px) {
             .card {
-                margin: 10px;
-                padding: 32px 24px;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
-            
-            .profile-icon {
-                width: 80px;
-                height: 80px;
-                font-size: 28px;
+                padding: 30px 20px;
             }
             
             .name {
@@ -196,46 +153,174 @@
             
             .social-buttons {
                 flex-direction: column;
-                gap: 12px;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <div class="profile-icon">홍</div>
-        <h1 class="name">홍길동</h1>
-        <p class="title">개발자 | ABC 회사</p>
-        
-        <div class="contact-section">
-            <div class="contact-item">
-                <div class="contact-icon">📱</div>
-                <span>010-1234-5678</span>
-            </div>
-            
-            <div class="contact-item">
-                <div class="contact-icon">✉️</div>
-                <span>hong@example.com</span>
-            </div>
-            
-            <div class="contact-item">
-                <div class="contact-icon">🌐</div>
-                <span>www.mywebsite.com</span>
-            </div>
+        <div id="loading" class="loading">
+            <p>명함 정보를 불러오는 중...</p>
         </div>
         
-        <div class="action-buttons">
-            <a href="tel:010-1234-5678" class="action-btn">전화하기</a>
-            <a href="mailto:hong@example.com" class="action-btn secondary">이메일 보내기</a>
+        <div id="error" class="error" style="display: none;">
+            <p>명함 정보를 찾을 수 없습니다.</p>
         </div>
         
-        <div class="social-section">
-            <div class="social-title">SNS 계정</div>
-            <div class="social-buttons">
-                <a href="https://instagram.com/myinstagram" class="social-btn instagram">Instagram</a>
-                <a href="https://twitter.com/mytwitter" class="social-btn twitter">Twitter</a>
+        <div id="card-content" style="display: none;">
+            <div class="avatar" id="avatar">홍</div>
+            
+            <h1 class="name" id="name">홍길동</h1>
+            <p class="title" id="title">개발자 | ABC 회사</p>
+            
+            <div class="contact-item" id="phone-item" style="display: none;">
+                <span class="icon">📱</span>
+                <a href="#" id="phone-link">010-1234-5678</a>
+            </div>
+            
+            <div class="contact-item" id="email-item" style="display: none;">
+                <span class="icon">✉️</span>
+                <a href="#" id="email-link">hong@example.com</a>
+            </div>
+            
+            <div class="contact-item" id="website-item" style="display: none;">
+                <span class="icon">🌐</span>
+                <a href="#" id="website-link" target="_blank">www.mywebsite.com</a>
+            </div>
+            
+            <div class="social-section" id="social-section" style="display: none;">
+                <h3 class="social-title">SNS 계정</h3>
+                <div class="social-buttons" id="social-buttons">
+                    <!-- 동적으로 생성됨 -->
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // URL에서 명함 데이터 추출
+        function getCardData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('d') || urlParams.get('data'); // 'd' 파라미터 우선, 'data' 호환성
+            
+            if (!dataParam) {
+                return null;
+            }
+            
+            try {
+                const decodedData = decodeURIComponent(dataParam);
+                return JSON.parse(decodedData);
+            } catch (e) {
+                console.error('명함 데이터 파싱 오류:', e);
+                return null;
+            }
+        }
+
+        // 명함 정보 표시
+        function displayCardInfo(cardData) {
+            if (!cardData) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                return;
+            }
+
+            // 기본 정보 (단축된 키 사용)
+            const name = cardData.n || cardData.name;
+            const title = cardData.t || cardData.title;
+            const company = cardData.c || cardData.company;
+            const phone = cardData.p || cardData.phone;
+            const email = cardData.e || cardData.email;
+            const website = cardData.w || cardData.website;
+            const instagram = cardData.i || cardData.instagram;
+            const twitter = cardData.x || cardData.twitter;
+            
+            document.getElementById('avatar').textContent = name ? name.charAt(0) : '?';
+            document.getElementById('name').textContent = name || '이름 없음';
+            
+            // 직책과 회사 정보 조합
+            let titleText = '';
+            if (title && company) {
+                titleText = `${title} | ${company}`;
+            } else if (title) {
+                titleText = title;
+            } else if (company) {
+                titleText = company;
+            } else {
+                titleText = '직책 정보 없음';
+            }
+            document.getElementById('title').textContent = titleText;
+            document.title = `${name || '디지털 명함'} - 디지털 명함`;
+
+            // 전화번호
+            if (phone && phone.trim()) {
+                document.getElementById('phone-item').style.display = 'flex';
+                document.getElementById('phone-link').href = `tel:${phone}`;
+                document.getElementById('phone-link').textContent = phone;
+            }
+
+            // 이메일
+            if (email && email.trim()) {
+                document.getElementById('email-item').style.display = 'flex';
+                document.getElementById('email-link').href = `mailto:${email}`;
+                document.getElementById('email-link').textContent = email;
+            }
+
+            // 웹사이트
+            if (website && website.trim()) {
+                document.getElementById('website-item').style.display = 'flex';
+                let websiteUrl = website;
+                if (!websiteUrl.startsWith('http://') && !websiteUrl.startsWith('https://')) {
+                    websiteUrl = 'https://' + websiteUrl;
+                }
+                document.getElementById('website-link').href = websiteUrl;
+                document.getElementById('website-link').textContent = websiteUrl.replace(/^https?:\/\//, '');
+            }
+
+            // SNS 계정
+            const socialButtons = document.getElementById('social-buttons');
+            socialButtons.innerHTML = '';
+
+            if (instagram && instagram.trim()) {
+                const instagramBtn = document.createElement('a');
+                let instagramUrl = instagram;
+                if (!instagramUrl.startsWith('http://') && !instagramUrl.startsWith('https://')) {
+                    instagramUrl = 'https://instagram.com/' + instagramUrl.replace('@', '');
+                }
+                instagramBtn.href = instagramUrl;
+                instagramBtn.className = 'social-btn';
+                instagramBtn.textContent = 'Instagram';
+                instagramBtn.target = '_blank';
+                socialButtons.appendChild(instagramBtn);
+            }
+
+            if (twitter && twitter.trim()) {
+                const twitterBtn = document.createElement('a');
+                let twitterUrl = twitter;
+                if (!twitterUrl.startsWith('http://') && !twitterUrl.startsWith('https://')) {
+                    twitterUrl = 'https://twitter.com/' + twitterUrl.replace('@', '');
+                }
+                twitterBtn.href = twitterUrl;
+                twitterBtn.className = 'social-btn';
+                twitterBtn.textContent = 'Twitter';
+                twitterBtn.target = '_blank';
+                socialButtons.appendChild(twitterBtn);
+            }
+
+            if ((instagram && instagram.trim()) || (twitter && twitter.trim())) {
+                document.getElementById('social-section').style.display = 'block';
+            }
+
+            // 로딩 숨기고 카드 표시
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('card-content').style.display = 'block';
+        }
+
+        // 페이지 로드 시 실행
+        window.onload = function() {
+            const cardData = getCardData();
+            displayCardInfo(cardData);
+        };
+    </script>
 </body>
 </html>
