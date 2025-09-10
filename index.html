@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍길동의 디지털 명함</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .title {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .info {
+            margin: 15px 0;
+            color: #555;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            margin: 8px;
+            transition: transform 0.3s;
+            font-size: 14px;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-btn {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            line-height: 50px;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .instagram { background: #E4405F; }
+        .twitter { background: #1DA1F2; }
+        
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="profile-img">��</div>
+        <h1>홍길동</h1>
+        <p class="title">개발자 | ABC 회사</p>
+        
+        <div class="info">
+            <p>�� 010-1234-5678</p>
+            <p>✉️ hong@example.com</p>
+            <p>🌐 www.mywebsite.com</p>
+        </div>
+        
+        <div>
+            <a href="tel:010-1234-5678" class="contact-btn">전화하기</a>
+            <a href="mailto:hong@example.com" class="contact-btn">이메일 보내기</a>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/myinstagram" class="social-btn instagram">��</a>
+            <a href="https://twitter.com/mytwitter" class="social-btn twitter">🐦</a>
+        </div>
+    </div>
+</body>
+</html>
