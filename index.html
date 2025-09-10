@@ -141,21 +141,24 @@
         .social-buttons {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
         }
         
         .social-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
+            width: auto;
+            height: 48px;
+            border-radius: 24px;
             text-decoration: none;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 16px;
+            font-weight: 600;
             transition: all 0.2s;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 0 24px;
+            min-width: 120px;
         }
         
         .social-btn:hover {
@@ -189,6 +192,11 @@
             
             .name {
                 font-size: 24px;
+            }
+            
+            .social-buttons {
+                flex-direction: column;
+                gap: 12px;
             }
         }
     </style>
@@ -224,8 +232,8 @@
         <div class="social-section">
             <div class="social-title">SNS 계정</div>
             <div class="social-buttons">
-                <a href="https://instagram.com/myinstagram" class="social-btn instagram">📷</a>
-                <a href="https://twitter.com/mytwitter" class="social-btn twitter">��</a>
+                <a href="https://instagram.com/myinstagram" class="social-btn instagram">Instagram</a>
+                <a href="https://twitter.com/mytwitter" class="social-btn twitter">Twitter</a>
             </div>
         </div>
     </div>
