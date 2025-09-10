@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>홍길동의 디지털 명함</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .card { max-width: 400px; margin: 0 auto; border: 2px solid #333; padding: 20px; border-radius: 10px; }
+        .contact-btn { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>홍길동</h1>
+        <p>회사: ABC 회사</p>
+        <p>직책: 개발자</p>
+        <p>전화: 010-1234-5678</p>
+        <p>이메일: hong@example.com</p>
+        
+        <a href="tel:010-1234-5678" class="contact-btn">전화하기</a>
+        <a href="mailto:hong@example.com" class="contact-btn">이메일 보내기</a>
+        <a href="https://instagram.com/myinstagram" class="contact-btn">Instagram</a>
+        <a href="https://twitter.com/mytwitter" class="contact-btn">Twitter</a>
+    </div>
+</body>
+</html>
